@@ -38,3 +38,17 @@ export const register = async (req, res) => {
         res.status(500).json({error: err.message});
     }
 };
+
+
+// Login user 
+export const login = async (req, res) => {
+    try {
+            const { email, password } = req.body;
+            const user = await User.findOne({ email });
+            if (!user) {
+                return res.status(401).json({ error: 'Invalid Credentials' });
+            }
+}catch (e) {
+    res.status(500).json({ error: e.message });
+}
+}

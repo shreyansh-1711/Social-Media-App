@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
+import authRoutes from "./routes/auth.js"
 import {register} from "./controllers/auth.js";
 
 
@@ -31,6 +32,9 @@ app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 
 // Routes With FILES 
 app.post("/auth/register", upload.single("picture"), register );
+
+// ROUTES 
+app.use("/auth", authRoutes);
 
 
 // File Storage 

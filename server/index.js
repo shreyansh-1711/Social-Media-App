@@ -13,6 +13,7 @@ import {register} from "./controllers/auth.js";
 // For path 
 import path from "path";
 import { fileURLToPath } from "url";
+import { verifyToken } from "./middleware/auth.js";
 
 // Configuration 
 const __filename = fileURLToPath(import.meta.url);

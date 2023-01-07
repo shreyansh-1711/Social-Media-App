@@ -7,6 +7,7 @@ import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
 import authRoutes from "./routes/auth.js"
+import userRoutes from "./routes/user.js";
 import {register} from "./controllers/auth.js";
 
 
@@ -36,6 +37,7 @@ app.post("/auth/register", upload.single("picture"), register );
 
 // ROUTES 
 app.use("/auth", authRoutes);
+app.use("/users", usersRoutes);
 
 
 // File Storage 

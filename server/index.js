@@ -37,7 +37,7 @@ app.post("/auth/register", upload.single("picture"), register );
 
 // ROUTES 
 app.use("/auth", authRoutes);
-app.use("/users", usersRoutes);
+app.use("/users", userRoutes);
 
 
 // File Storage 

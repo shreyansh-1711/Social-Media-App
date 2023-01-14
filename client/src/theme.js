@@ -97,6 +97,7 @@ export const colorTokens = {
           fontFamily: ["Rubik", "sans-serif"].join(","),
           fontSize: 16,
         },
+        
         h6: {
           fontFamily: ["Rubik", "sans-serif"].join(","),
           fontSize: 14,

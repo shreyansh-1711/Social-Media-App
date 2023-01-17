@@ -9,7 +9,6 @@ import { createTheme, ThemeProvider } from "@mui/system";
 import { themeSettings } from "./theme";
 
 
-
 function App() {
 
   const mode = useSelector((state) => state.mode);
@@ -30,5 +29,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

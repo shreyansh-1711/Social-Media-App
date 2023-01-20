@@ -58,7 +58,7 @@ const Navbar = () => {
             },
           }}
         >
-          Sociopedia
+          Manthan
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween

@@ -17,20 +17,18 @@ function App() {
 
 
   return (
-    
+
     <div className="app">
       <BrowserRouter>
         <ThemeProvider theme={theme} >
-          <CssBaseline />       
+          <CssBaseline />
           <Routes>
             <Route path="/" element={<LoginPage />} />
-            <Route path="/home" element={isAuth ? <HomePage /> : <Navigate to="/"></Navigate> } />
-            <Route path="/profile/:userId" element={<ProfilePage />} />
+            <Route path="/home" element={isAuth ? <HomePage /> : <Navigate to="/"></Navigate>} />
+            <Route path="/profile/:userId" element={isAuth ? <ProfilePage /> : <Navigate to="/"></Navigate>} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
-
-
     </div>
   );
 }

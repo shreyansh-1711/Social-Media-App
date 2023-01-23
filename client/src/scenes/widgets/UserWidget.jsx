@@ -12,6 +12,7 @@ import WidgetWrapper from "components/WidgetWrapper"
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Cursor } from "mongoose"
 
 const UserWidget = ({userId, picturePath}) => {
     const [user, setUser] = useState(null);
@@ -58,6 +59,25 @@ const UserWidget = ({userId, picturePath}) => {
             pb="1.1rem"
             onClick={()=>navigate(`/profile/${userId}`)}
             >
+                <FlexBetween gap="1rem">
+                    <UserImage image={picturePath} />
+                    <Box>
+                        <Typography
+                        variant="h4"
+                        color={dark}
+                        fontWeight="500"
+                        sx={{
+                            "&:hover": {
+                                color: palette.primary.light,
+                                cursor:"pointer",
+
+                            }
+                        }}>
+
+                            
+                        </Typography>
+                    </Box>
+                </FlexBetween>
             </FlexBetween>
         </WidgetWrapper>
      )

@@ -58,7 +58,6 @@ const UserWidget = ({userId, picturePath}) => {
             pb="1.1rem"
             
             >
-
             </FlexBetween>
         </WidgetWrapper>
      )

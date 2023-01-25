@@ -1,11 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
-import mongoose from "mongoose";
-import cors from "cors";
-import dotenv from "dotenv";
-import multer from "multer";
-import helmet from "helmet";
-import morgan from "morgan";
+import mongoose from "mongoose"; // for mongoDB access
+import cors from "cors"; // for making cross-version request
+import dotenv from "dotenv"; // to use env files (enviourment variable)
+import multer from "multer"; // to upload the files locally
+import helmet from "helmet"; // use to secure http headers / safety
+import morgan from "morgan"; // mainly a middleware used for login 
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
@@ -24,13 +24,13 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 const app = express();
 app.use(express.json());
-app.use(helmet());
+app.use(helmet()); // invoked
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan("common"));
+app.use(morgan("common"));  // invoked
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
-app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+app.use("/assets", express.static(path.join(__dirname, "public/assets"))); // set the directory where we keep the assets
 
 /* FILE STORAGE */
 const storage = multer.diskStorage({

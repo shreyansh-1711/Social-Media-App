@@ -1,4 +1,6 @@
+// For password encryption
 import bcrypt from "bcrypt";
+// Given Token 
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
@@ -16,8 +18,12 @@ export const register = async (req, res) => {
       occupation,
     } = req.body;
 
+    // Generate a salt for password hashing
     const salt = await bcrypt.genSalt();
+
+    // Hash the password using the generated salt
     const passwordHash = await bcrypt.hash(password, salt);
+
 
     const newUser = new User({
       firstName,

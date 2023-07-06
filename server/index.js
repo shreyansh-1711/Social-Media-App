@@ -6,8 +6,13 @@ import dotenv from "dotenv"; // to use env files (enviourment variable)
 import multer from "multer"; // to upload the files locally
 import helmet from "helmet"; // use to secure http headers / safety
 import morgan from "morgan"; // mainly a middleware used for login 
+
+//to configure path of directories
 import path from "path";
 import { fileURLToPath } from "url";
+
+
+
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
@@ -18,19 +23,35 @@ import User from "./models/User.js";
 import Post from "./models/Post.js";
 import { users, posts } from "./data/index.js";
 
+
 /* CONFIGURATIONS */
+//Gives File System path of current module
 const __filename = fileURLToPath(import.meta.url);
+//Directory path of current module
 const __dirname = path.dirname(__filename);
 dotenv.config();
+// invoke express
 const app = express();
 app.use(express.json());
 app.use(helmet()); // invoked
+
+// Enable Cross-Origin Resource Sharing (CORS) policy to allow cross-origin requests
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan("common"));  // invoked
+
+// Enable logging of HTTP requests using the "common" format
+app.use(morgan("common"));
+
+// Parse incoming requests with JSON payloads and set limit and extended options
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
+
+// Parse incoming requests with URL-encoded payloads and set limit and extended options
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+
+// invoke cross origin resource sharing
 app.use(cors());
-app.use("/assets", express.static(path.join(__dirname, "public/assets"))); // set the directory where we keep the assets
+
+// set the directory where we keep the assets
+app.use("/assets", express.static(path.join(__dirname, "public/assets"))); 
 mongoose.set('strictQuery', true);
 
 /* FILE STORAGE */
